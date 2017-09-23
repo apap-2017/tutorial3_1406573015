@@ -1,0 +1,49 @@
+1. Method yang digunakan untuk mencari student dari npmnya
+
+	@Override
+	public StudentModel selectStudent(String npm) {
+		for(int i = 0; i < student.size();i++ ) {
+			if(npm.equals(student.get(i).getNpm())) {
+				return student.get(i);
+			}
+		}
+		return null;
+	}
+
+
+1.http://localhost:8080/student/add?npm=12345&name=chanek&gpa=3.43
+
+Hasilnya akan memunculkan halaman add yang telah dibuat dimana akan mengeluarkan 	string yang isinya Data berhasil ditambahkan
+
+2. http://localhost:8080/student/add?npm=12345&name=chanek
+
+Tidak terjadi compile error, tapi akan menimbulkan erro ketika di run di browser. Error tersebut terjadi karena tidak ada value untuk gpa sedangkan controller memaksa untuk meminta input gpa dari user.
+
+3. Tidak terjadi error sama sekali dan data dari student bisa ditampilkan
+
+4. Terjadi error saat dijalankan di browser. Karena saat pertama kali spring boot di run tidak ada data yang tersimpan pada DAO
+
+5. http://localhost:8080/student/viewall
+	Data Student akan muncul.
+
+6. http://localhost:8080/student/viewall
+	Data semua Student akan muncul.
+
+
+
+Latihan
+
+Untuk menyelesaikan soal no 1 maka saya membuat path variable. dengan fungsi seperti requestmapping  view yang ada pada tutorial dan kan menambahkan fungsi logic if else untuk menentukan npm ada atau tidak
+
+
+Untuk menyelesaikan soal no 2 saya menambahkan method baru terlebih dahulu pada StudentService dan 
+method tersebut saya beri nama delete dengan parameter(Student student) kemudian setelah itu saya 
+menambahkan method di InMemoryService yaitu method delete(Student student) didalam method tersbeut ada fungsi 
+remove yang digunakan untuk menghapus data pada List. Setelah itu saya membuat path variable sesuai dengan keinginan soal yaitu
+/student/delete/{npm}. didalam path tersebut terdapat logic if else untuk menentukan ada tidaknya npm. untuk menghapus data pertama-tama
+mencari npm terlebih dahulu. hal ini bisa dilakukan dengan menggunakan method pencarian npm yang sudah ada. kemudian didapatkan object student
+dan dari situ bisa dilakukan proses remove pada object yang ditentukan. setelah itu baru membuat file html yang diperlukan yaitu delete.html dan error.html untuk menemukan pesan error
+
+
+
+
